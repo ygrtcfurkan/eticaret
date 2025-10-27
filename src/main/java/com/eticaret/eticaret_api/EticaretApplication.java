@@ -1,5 +1,6 @@
 package com.eticaret.eticaret_api;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class EticaretApplication {
 
     public static void main(String[] args) {
+        Dotenv.configure().ignoreIfMissing().systemProperties().load();
         SpringApplication.run(EticaretApplication.class, args);
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
